@@ -52,8 +52,11 @@ defmodule Discordbot.Commands.Admin do
   """
   def handle(:message_create, payload = %{"content" => ("!avatar " <> avatar_url)}, state = %{rest_client: conn}) do
     if is_admin?(payload) do
-      {:ok, %{body: body}} = HTTPoison.get(avatar_url)
-      spawn fn -> DiscordEx.RestClient.resource(conn, :patch, "users/@me", %{avatar: "data:image/jpeg;base64," <> :base64.encode(body)}) end
+      spawn fn -> Channel.delete_message(conn, payload["channel_id"], payload["id"]) end
+      spawn fn ->
+        {:ok, %{body: body}} = HTTPoison.get(avatar_url)
+        DiscordEx.RestClient.resource(conn, :patch, "users/@me", %{avatar: "data:image/jpeg;base64," <> :base64.encode(body)}) 
+      end
       {:ok, state}
     else
       {:no, state}
