@@ -45,15 +45,7 @@ defmodule Discordbot.Commands do
     }
   end
 
-  defp parse_command([command]) do
-    %{
-      name: String.to_atom(command),
-      user: "",
-      content: ""
-    }
-  end
-
-  defp parse_command do
+  defp parse_command([]) do
     %{
       name: :none,
       user: "",

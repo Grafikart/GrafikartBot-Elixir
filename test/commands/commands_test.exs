@@ -1,6 +1,6 @@
 defmodule Discordbot.CommandsTest do
 
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
   setup do
     {:ok, state: %{rest_client: self()}}
@@ -13,6 +13,20 @@ defmodule Discordbot.CommandsTest do
     Discordbot.Commands.handle(:message_create, message, state)
     assert_receive {_, _, {_, :delete, _, _}}
     assert_receive {_, _, {_, :post, _, %{content: "demo <@123123213> - Salut"}}}
+  end
+
+  test "command alone is detected", %{state: state} do
+    message = DiscordbotTest.message(%{
+      "content" => "!demo"
+    })
+    assert {:ok, _} = Discordbot.Commands.handle(:message_create, message, state)
+  end
+
+  test "no commmand is not parsed", %{state: state} do
+    message = DiscordbotTest.message(%{
+      "content" => "!"
+    })
+    assert {:no, _} = Discordbot.Commands.handle(:message_create, message, state)
   end
 
   test "commands are throttled", %{state: state} do
