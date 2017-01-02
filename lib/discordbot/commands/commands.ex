@@ -56,7 +56,7 @@ defmodule Discordbot.Commands do
 
   defp message(command) do
     Application.get_env(:discordbot, :commands)[command.name]
-      |> String.replace("@content", command.content)
+      |> String.replace("@content", String.replace(command.content, " ", "+"))
       |> String.replace("@user", command.user)
   end
 

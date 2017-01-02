@@ -50,6 +50,15 @@ defmodule Discordbot.CommandsTest do
     assert_receive {_, _, {_, :post, _, %{content: "demo  - Salut"}}}
   end
 
+  test "command replace spaces by +", %{state: state} do
+    message = DiscordbotTest.message(%{
+      "content" => "!demo Salut les gens"
+    })
+    Discordbot.Commands.handle(:message_create, message, state)
+    assert_receive {_, _, {_, :delete, _, _}}
+    assert_receive {_, _, {_, :post, _, %{content: "demo  - Salut+les+gens"}}}
+  end
+
   test "help command", %{state: state} do
     message = DiscordbotTest.message(%{
       "content" => "!help"
