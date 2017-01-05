@@ -7,4 +7,11 @@ config :discordbot,
   filters: [
     # {channel_id, regex}
     {123, ~r/^(\[[^\]]+\]|<\:[a-z0-9]+\:[0-9]+>) .+ https?:\/\/\S*$/}
+  ],
+  sms: [
+    role: "ROLE ID",
+    credentials: [
+      pass: "FREEBOX PASS",
+      user: "FREEBOX USER"
+    ]
   ]

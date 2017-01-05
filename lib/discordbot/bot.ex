@@ -18,6 +18,7 @@ defmodule Discordbot.Bot do
         Discordbot.Ping,
         Discordbot.Filters,
         Discordbot.Commands,
+        Discordbot.Commands.SMS,
         Discordbot.Commands.Admin
       ])
     else
