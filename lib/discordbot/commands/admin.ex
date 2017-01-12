@@ -67,7 +67,10 @@ defmodule Discordbot.Commands.Admin do
     {:no, state}
   end
 
-  defp is_admin?(payload) do
+  @doc """
+  Does the payload (message coming from the websocket) belongs to an Admin ?
+  """
+  def is_admin?(payload) do
     Application.get_env(:discordbot, :admin) == payload["author"]["id"]
   end
 
