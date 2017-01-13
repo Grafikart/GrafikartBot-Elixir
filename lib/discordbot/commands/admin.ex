@@ -16,6 +16,24 @@ defmodule Discordbot.Commands.Admin do
   end
 
   @doc """
+  Clean multiple messages using bulk_delete
+  !clean 10
+  """
+  def handle(:message_create, payload = %{"content" => "!clean " <> count, "channel_id" => channel_id}, state = %{rest_client: conn}) do
+    if is_admin?(payload) do
+      spawn fn ->
+        message_ids = Channel.messages(conn, channel_id)
+          |> Enum.map(&(&1["id"]))
+          |> Enum.slice(0, String.to_integer(count) + 1)
+        Channel.bulk_delete_messages(conn, channel_id, message_ids)
+      end
+      {:ok, state}
+    else
+      {:no, state}
+    end
+  end
+
+  @doc """
   Send a message to a specific channel
   ! #channel Message
   """
