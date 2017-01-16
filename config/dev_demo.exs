@@ -14,4 +14,11 @@ config :discordbot,
       pass: "FREEBOX PASS",
       user: "FREEBOX USER"
     ]
-  ]
+  ],
+  guild: "GUILD_ID",
+  premium_role: "PREMIUM_ROLE_ID",
+  database: [
+    username: "root",
+    password: "root",
+    database: "grafikart_dev"
+   ]

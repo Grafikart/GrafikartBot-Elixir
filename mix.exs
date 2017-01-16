@@ -14,7 +14,7 @@ defmodule Discordbot.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :discord_ex, :poison, :websocket_client],
+    [applications: [:logger, :discord_ex, :poison, :websocket_client, :mariaex],
      mod: {Discordbot, []}]
   end
 
@@ -32,7 +32,8 @@ defmodule Discordbot.Mixfile do
       {:discord_ex, git: "https://github.com/rmcafee/discord_ex.git"},
       {:httpoison, "~> 0.9.0"},
       {:poison, "~> 2.0"},
-      {:distillery, "~> 1.0"}
+      {:distillery, "~> 1.0"},
+      {:mariaex, "~> 0.7.3"}
     ]
   end
 end

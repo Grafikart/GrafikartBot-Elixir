@@ -81,6 +81,20 @@ defmodule Discordbot.Commands.Admin do
     end
   end
 
+  @doc """
+  Update premium role
+  !premium
+  """
+  def handle(:message_create, payload = %{"content" => "!premium"}, state = %{rest_client: conn}) do
+    if is_admin?(payload) do
+      spawn fn -> Channel.delete_message(conn, payload["channel_id"], payload["id"]) end
+      spawn fn -> Discordbot.Tasks.Premium.update_role(:premium_process) end
+      {:ok, state}
+    else
+      {:no, state}
+    end
+  end
+
   def handle(_type, _data, state) do
     {:no, state}
   end

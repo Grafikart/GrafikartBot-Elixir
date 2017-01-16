@@ -8,7 +8,10 @@ defmodule Discordbot do
     # Define workers and child supervisors to be supervised
     api_key = Application.get_env(:discordbot, :api_key)
     children = if api_key do
-      [worker(Discordbot.Bot, [api_key], modules: [Discordbot.Botserver])]
+      [
+        worker(Discordbot.Bot, [api_key], modules: [Discordbot.Botserver]),
+        worker(Discordbot.Tasks.Premium, [:premium_process])
+      ]
     else
       []
     end
