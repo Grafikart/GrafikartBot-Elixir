@@ -74,12 +74,10 @@ defmodule Discordbot.Tasks.Premium do
   ####
 
   def handle_cast(:update_role, state) do
-    IO.inspect "---"
     handle_update_role(state)
   end
 
   def handle_info(:update_role, state) do
-    IO.inspect "====="
     schedule_work()
     handle_update_role(state)
   end
