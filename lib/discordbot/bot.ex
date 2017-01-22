@@ -17,6 +17,7 @@ defmodule Discordbot.Bot do
         Discordbot.Code,
         Discordbot.Ping,
         Discordbot.Filters,
+        Discordbot.Filters.Insults,
         Discordbot.Commands,
         Discordbot.Commands.SMS,
         Discordbot.Commands.Admin
