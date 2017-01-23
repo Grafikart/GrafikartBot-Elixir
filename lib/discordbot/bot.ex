@@ -15,9 +15,9 @@ defmodule Discordbot.Bot do
       perform_handles(type, data, state, [
         Discordbot.Capslock,
         Discordbot.Code,
-        Discordbot.Ping,
         Discordbot.Filters,
         Discordbot.Filters.Insults,
+        Discordbot.Filters.Questions,
         Discordbot.Commands,
         Discordbot.Commands.SMS,
         Discordbot.Commands.Admin
