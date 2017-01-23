@@ -21,6 +21,10 @@ defmodule Discordbot.Filters.Questions do
     {:no, state}
   end
 
+  @doc """
+  Detect if the message is a question
+  """
+  @spec is_question?(String.t) :: boolean
   def is_question?(content) do
     if length(String.split(content)) <= 10 do
       Regex.run(~r/^(quelqu'un|qqun|des personnes)[^\?]+\?$/i, String.trim(content)) != nil

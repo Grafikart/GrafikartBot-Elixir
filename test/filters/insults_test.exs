@@ -8,7 +8,7 @@ defmodule Discordbot.Filters.InsultsTest do
 
   test "should detect insults" do
     message = "franchement c'est un truc de pute"
-    assert Discordbot.Filters.Insults.is_insult(message) == true
+    assert Discordbot.Filters.Insults.is_insult?(message) == true
   end
 
   test "should detect absence of insults" do
@@ -16,7 +16,7 @@ defmodule Discordbot.Filters.InsultsTest do
      scrollspy solutions, but has the following advantages:
      it is written on vanilla javascript,
     """
-    assert Discordbot.Filters.Insults.is_insult(message) == false
+    assert Discordbot.Filters.Insults.is_insult?(message) == false
   end
 
   test "should delete the insult", %{state: state} do

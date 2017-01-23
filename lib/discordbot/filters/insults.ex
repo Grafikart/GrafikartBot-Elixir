@@ -4,7 +4,7 @@ defmodule Discordbot.Filters.Insults do
   alias Discordbot.Helpers.Message
 
   def handle(:message_create, payload, state = %{rest_client: conn}) do
-    if is_insult(payload["content"]) do
+    if is_insult?(payload["content"]) do
       spawn fn -> Channel.delete_message(conn, payload["channel_id"], payload["id"]) end
       spawn fn -> Message.dm(conn, payload["author"]["id"], dm(payload)) end
       {:ok, state}
@@ -20,13 +20,10 @@ defmodule Discordbot.Filters.Insults do
   @doc """
   Detect if the message includes insults
   """
-  @spec is_insult(String.t) :: boolean
-  def is_insult(content) do
+  @spec is_insult?(String.t) :: boolean
+  def is_insult?(content) do
     insultes = Enum.join(Application.get_env(:discordbot, :insults)[:badwords], "|")
-    case Regex.run(~r/(\s(#{insultes})|(#{insultes})\s)$/i, content) do
-      nil -> false
-      _ -> true
-    end
+    Regex.run(~r/(\s(#{insultes})|(#{insultes})\s)$/i, content) != nil
   end
 
   @doc """
