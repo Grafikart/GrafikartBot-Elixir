@@ -18,4 +18,13 @@ defmodule Discordbot.Helpers.Message do
     "<@#{user_id}>"
   end
 
+  @doc """
+  Prepare un message replace @XXX with the right content
+  """
+  def prepare_message(template, %{"content" => content, "author" => %{"id" => user_id}}) do
+    template
+      |> String.replace("@user", mention(user_id))
+      |> String.replace("@content", content)
+  end
+
 end

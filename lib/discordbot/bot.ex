@@ -13,11 +13,12 @@ defmodule Discordbot.Bot do
   def handle_event({type, %{data: data}}, state) do
     if data["author"]["id"] != state.client_id do
       perform_handles(type, data, state, [
-        Discordbot.Capslock,
-        Discordbot.Code,
-        Discordbot.Filters,
         Discordbot.Filters.Insults,
         Discordbot.Filters.Questions,
+        Discordbot.Filters.Capslock,
+        Discordbot.Filters.Code,
+        Discordbot.Filters.Mentions,
+        Discordbot.Filters,
         Discordbot.Commands,
         Discordbot.Commands.SMS,
         Discordbot.Commands.Admin

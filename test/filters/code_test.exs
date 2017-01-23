@@ -1,6 +1,9 @@
-defmodule Discordbot.CodeTest do
+defmodule Discordbot.Filters.CodeTest do
 
   use ExUnit.Case, async: true
+
+  doctest Discordbot.Filters.Code
+  alias Discordbot.Filters.Code
 
   @code """
       if(isset($_SESSION['id']) AND !empty($_SESSION['id']))
@@ -20,7 +23,7 @@ defmodule Discordbot.CodeTest do
   end
 
   test "should detect PHP Code" do
-    assert Discordbot.Code.is_code(@code) == true
+    assert Code.is_code(@code) == true
   end
 
   test "should allow small piece of code" do
@@ -29,7 +32,7 @@ defmodule Discordbot.CodeTest do
         $id_planete_utilise=$_SESSION['planete_utilise'];
     }
     """
-    assert Discordbot.Code.is_code(code) == false
+    assert Code.is_code(code) == false
   end
 
   test "should detect bash code" do
@@ -44,14 +47,14 @@ defmodule Discordbot.CodeTest do
     $server=$1
     $map=$2
     """
-    assert Discordbot.Code.is_code(code) == true
+    assert Code.is_code(code) == true
   end
 
   test "should emit a private message", %{state: state} do
     message = Map.merge(DiscordbotTest.message, %{
       "content" => @code
     })
-    Discordbot.Code.handle(:message_create, message, state)
+    Code.handle(:message_create, message, state)
     assert_receive {_, _, {_, :delete, _, _}}
   end
 
@@ -62,7 +65,7 @@ defmodule Discordbot.CodeTest do
         "id" => Application.get_env(:discordbot, :admin)
       }
     })
-    assert {:no, _} = Discordbot.Code.handle(:message_create, message, state)
+    assert {:no, _} = Code.handle(:message_create, message, state)
   end
 
 end

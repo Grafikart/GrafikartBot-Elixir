@@ -2,6 +2,7 @@ use Mix.Config
 
 config :discordbot,
   capslock: ":scream_cat: Pas la peine de hurler @user",
+  empty_mention: ":robot: Merci de ne pas mentionner un autre utilisateur sans message @user",
   question: ":question: N'hésite pas à poser ta question directement @user, il n'est pas utile de demander si quelqu'un connait quelquechose avant.",
   filters_dm: """
 :octagonal_sign: Votre message a été supprimé car il ne respecte pas le format imposé par le channel

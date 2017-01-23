@@ -1,4 +1,4 @@
-defmodule Discordbot.Capslock do
+defmodule Discordbot.Filters.Capslock do
   @moduledoc """
   Handle capslock message 
   """

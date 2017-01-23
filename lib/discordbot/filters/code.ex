@@ -1,4 +1,4 @@
-defmodule Discordbot.Code do
+defmodule Discordbot.Filters.Code do
   
   alias DiscordEx.RestClient.Resources.Channel
   alias Discordbot.Helpers.Message

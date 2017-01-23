@@ -1,15 +1,15 @@
 defmodule SMSNotAllowedMock do
-  def is_allowed(conn, payload) do
+  def is_allowed(_,_) do
     false
   end
 end
 
 defmodule SMSAllowedMock do
-  def is_allowed(conn, payload) do
+  def is_allowed(_,_) do
     true
   end
 
-  def send(message) do
+  def send(_) do
   end
 end
 
