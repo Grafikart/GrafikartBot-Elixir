@@ -12,7 +12,8 @@ defmodule Discordbot.Filters.QuestionsTest do
     "Des personnes adeptes de rails ?",
     "Des personnes dév sous rails ici ? ",
     "des gens fort en es 2015 ?",
-    "quelqu'un à déjà eu à réaliser une map de rpg?"
+    "quelqu'un à déjà eu à réaliser une map de rpg?",
+    "Bonjour qui s'y connaît bien en Rails please ? "
   ]
   @not_questions [
     "eu, dis toujours",

@@ -18,7 +18,7 @@ defmodule Discordbot.Filters.Mentions do
     end
   end
 
-  def handle(_type, payload, state) do
+  def handle(_type, _payload, state) do
     {:no, state}
   end
 

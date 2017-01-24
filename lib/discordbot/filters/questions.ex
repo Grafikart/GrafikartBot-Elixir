@@ -27,7 +27,7 @@ defmodule Discordbot.Filters.Questions do
   @spec is_question?(String.t) :: boolean
   def is_question?(content) do
     if length(String.split(content)) <= 10 do
-      Regex.run(~r/^(des gens|quelqu'un|qqun|des personnes)[^\?]+\?$/i, String.trim(content)) != nil
+      Regex.run(~r/^(bonjour |salut )?(qui s'y conna(î|i)t|des gens|quelqu'un|qqun|des personnes)[^\?]+\?$/i, String.trim(content)) != nil
     else
       false  
     end

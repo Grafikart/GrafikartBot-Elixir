@@ -5,9 +5,13 @@ defmodule Discordbot.Commands.SMS do
   @doc """
   Send a message on general channel
   """
-  def handle(:message_create, payload = %{"content" => "!sms " <> message}, state = %{rest_client: conn}) do
+  def handle(:message_create, payload = %{"content" => "!sms " <> _message}, state = %{rest_client: conn}) do
     Channel.delete_message(conn, payload["channel_id"], payload["id"])
     handle_sms(payload, state, __MODULE__)
+  end
+
+  def handle(_type, _data, state) do
+    {:no, state}
   end
 
   def handle_sms(payload = %{"content" => "!sms " <> message}, state = %{rest_client: conn}, module) do
@@ -40,10 +44,6 @@ defmodule Discordbot.Commands.SMS do
     %{"guild_id" => guild_id} = Channel.get(conn, payload["channel_id"])
     %{"roles" => roles} = DiscordEx.RestClient.Resources.Guild.member(conn, guild_id, payload["author"]["id"])
     Enum.member?(roles, expected_role)
-  end
-
-  def handle(_type, _data, state) do
-    {:no, state}
   end
 
 end
