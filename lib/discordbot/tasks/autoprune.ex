@@ -1,13 +1,14 @@
 defmodule Discordbot.Tasks.Autoprune do
   @moduledoc """
-  GenServer permettant de mettre à jour les utilisateurs premiums depuis le site
+  Prune old members every day
   """
 
   use GenServer
 
   alias DiscordEx.RestClient.Resources.Guild
 
-  @period 60 * 1000
+  @period 24 * 60 * 60 * 1000
+  @days 3
 
   ####
   # Client
@@ -40,8 +41,7 @@ defmodule Discordbot.Tasks.Autoprune do
 
   def handle_info(:prune, state) do
     schedule_work()
-    IO.inspect("I'm pruning")
-    Guild.begin_prune(state.rest_client, state.guild, %{days: 3})
+    Guild.begin_prune(state.rest_client, state.guild, %{days: @days})
     {:noreply, state}
   end
 

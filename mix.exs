@@ -3,7 +3,7 @@ defmodule Discordbot.Mixfile do
 
   def project do
     [app: :discordbot,
-     version: "0.1.9",
+     version: "0.1.10",
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
