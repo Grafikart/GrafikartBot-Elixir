@@ -12,7 +12,19 @@ defmodule Discordbot.Filters.QuestionsTest do
     "Des personnes adeptes de rails ?",
     "Des personnes dév sous rails ici ? ",
     "des gens fort en es 2015 ?",
-    "quelqu'un à déjà eu à réaliser une map de rpg?"
+    "quelqu'un à déjà eu à réaliser une map de rpg?",
+    "Des gens fort en PHP ?",
+    "Des gens pour m'aider sur rails",
+    "Des personnes pour m'aider sur php ?",
+    "Des personnes fortes en php ?",
+    "Des gens pour m'aider en js ?",
+    "Des personnes fortes en js ?",
+    "Bonjour qui s'y connaît bien en Rails please ?",
+    "Des gens pour de l'aide sur elixir ?",
+    "Qqn peut m'aider ?",
+    "Des gens pour m'aider ?",
+    "Une personne pour m'aider ?",
+    "Des dev php dispo ?"
   ]
   @not_questions [
     "eu, dis toujours",
