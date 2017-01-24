@@ -41,25 +41,19 @@ defmodule Discordbot.Tasks.Premium do
     GenServer.cast(pid, :update_role)
   end
 
-  """
-  Relance le process toutes les X secondes
-  """
+  # Relance le process toutes les X secondes
   defp schedule_work do
     Process.send_after(self(), :update_role, @period) # In 2 hours
   end
 
-  """
-  Récupère la liste de tous les utilisateurs dans le role premium du channel
-  """
+  # Récupère la liste de tous les utilisateurs dans le role premium du channel
   defp get_premiums(conn, guild, premium_role) do
     get_members(conn, guild, 0)
       |> Enum.filter(fn (user) -> Enum.member?(user["roles"], premium_role) end)
       |> Enum.map(&(&1["user"]["id"]))
   end
 
-  """
-  Récupère tous les membres d'un Guild récusrivement
-  """
+  # Récupère tous les membres d'un Guild récusrivement
   defp get_members(conn, guild, last_member) do
     members = Guild.members(conn, guild, %{limit: @users_per_calls, after: last_member})
     if length(members) === @users_per_calls do
@@ -89,9 +83,7 @@ defmodule Discordbot.Tasks.Premium do
     {:noreply, Map.put(state, :premiums, (state.premiums ++ new_premiums) -- removed_premium)}
   end
 
-  """
-  Permet de passer un utilisateur premium sur Discord
-  """
+  # Permet de passer un utilisateur premium sur Discord
   @spec add_premium(String.t, map) :: String.t
   defp add_premium(user_id, %{guild: guild, role: role, rest_client: conn}) do
     DiscordEx.RestClient.resource(conn, :put, "guilds/#{guild}/members/#{user_id}/roles/#{role}")
@@ -99,9 +91,7 @@ defmodule Discordbot.Tasks.Premium do
     user_id
   end
 
-  """
-  Permet de supprimer un utilisateur premium sur Discord
-  """
+  # Permet de supprimer un utilisateur premium sur Discord
   @spec remove_premium(String.t, map) :: String.t
   defp remove_premium(user_id, %{guild: guild, role: role, rest_client: conn}) do
     DiscordEx.RestClient.resource(conn, :delete, "guilds/#{guild}/members/#{user_id}/roles/#{role}")
@@ -109,10 +99,8 @@ defmodule Discordbot.Tasks.Premium do
     user_id
   end
 
-  """
-  Permet de récupérer les IDs Discord des membres premium
-  ["123","123124","123124"]
-  """
+  # Permet de récupérer les IDs Discord des membres premium
+  # ["123","123124","123124"]
   defp get_premium_ids do
     {:ok, p} = Mariaex.start_link(Application.get_env(:discordbot, :database))
     {:ok, results} = Mariaex.query(p, "SELECT discord_id FROM users WHERE discord_id IS NOT NULL AND premium >= NOW()")
