@@ -11,6 +11,7 @@ defmodule Discordbot.Filters.QuestionsTest do
     "Des personnes assez costaud en contrainte de SGBD Ici ?",
     "Des personnes adeptes de rails ?",
     "Des personnes dév sous rails ici ? ",
+    "des gens fort en es 2015 ?",
     "quelqu'un à déjà eu à réaliser une map de rpg?"
   ]
   @not_questions [
