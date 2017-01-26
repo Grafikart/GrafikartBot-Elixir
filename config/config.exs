@@ -39,7 +39,7 @@ config :discordbot,
     vague: """
 :robot: Ta question est un peu trop vague @user.
 Essaie de détailler un peu plus ta problématique (n'hésite pas à utiliser ce template : http://hastebin.com/uzufecurol.php).
-    """
+    """,
     troll: "https://www.youtube.com/watch?v=VjA9uJ2dFCI",
     google: ":mag: @user Tu devrais trouver ton bonheur sur google https://www.google.fr/?gws_rd=ssl#q=@content",
     php: ":mag: @user Je pense que cette fonction devrait t'aider http://php.net/search.php?show=quickref&pattern=@content",
