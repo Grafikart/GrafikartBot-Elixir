@@ -34,7 +34,7 @@ defmodule DiscordbotTest do
   end
 
   def message(data) do
-    Map.merge(message, data)
+    Map.merge(message(), data)
   end
 
 end
