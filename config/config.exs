@@ -3,7 +3,7 @@ use Mix.Config
 config :discordbot,
   capslock: ":scream_cat: Pas la peine de hurler @user",
   empty_mention: ":robot: Merci de ne pas mentionner un autre utilisateur sans message @user",
-  question: ":question: N'hésite pas à poser ta question directement @user, il n'est pas utile de demander si quelqu'un connait quelquechose avant.",
+  question: ":question: N'hésite pas à poser ta question directement @user, il n'est pas utile de demander si quelqu'un connait quelque chose avant.",
   filters_dm: """
 :octagonal_sign: Votre message a été supprimé car il ne respecte pas le format imposé par le channel
 
@@ -36,6 +36,10 @@ config :discordbot,
     """
   ],
   commands: [
+    vague: """
+:robot: Ta question est un peu trop vague @user.
+Essaie de détailler un peu plus ta problématique (n'hésite pas à utiliser ce template : http://hastebin.com/uzufecurol.php).
+    """
     troll: "https://www.youtube.com/watch?v=VjA9uJ2dFCI",
     google: ":mag: @user Tu devrais trouver ton bonheur sur google https://www.google.fr/?gws_rd=ssl#q=@content",
     php: ":mag: @user Je pense que cette fonction devrait t'aider http://php.net/search.php?show=quickref&pattern=@content",
