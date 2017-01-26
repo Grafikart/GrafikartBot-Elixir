@@ -14,7 +14,8 @@ defmodule Discordbot.Filters.QuestionsTest do
     "des gens fort en es 2015 ?",
     "quelqu'un à déjà eu à réaliser une map de rpg?",
     "Bonjour qui s'y connaît bien en Rails please ? ",
-    "Bonjour qui s'y connais avec prestashop ?"
+    "Bonjour qui s'y connais avec prestashop ?",
+    "Y'aurais t'il quelqu'un qui utilise MarionetteJs ?"
   ]
   @not_questions [
     "eu, dis toujours",
