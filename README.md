@@ -12,8 +12,19 @@ au bot de se relancer automatiquement en cas d'erreur mais aussi de gérer les a
 sur un process séparé pour une meilleur réactivité.
 
 ```bash
-# Démarrer le bot
-git pull origin master && MIX_ENV=prod mix release && _build/prod/rel/discordbot/bin/discordbot restart
+git pull origin master 
+
+# Premier démarage 
+mix do deps.get, compile, release.init
+MIX_ENV=prod mix release --env=prod 
+_build/prod/rel/discordbot/bin/discordbot start
+
+# Hot upgrade
+MIX_ENV=prod mix release --env=prod --upgrade
+_build/prod/rel/discordbot/bin/discordbot upgrade 0.1.13
+# Ou la méthode du restart
+MIX_ENV=prod mix release --env=prod
+_build/prod/rel/discordbot/bin/discordbot restart
 ```
 ## Envie de participer ?
 
