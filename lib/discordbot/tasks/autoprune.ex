@@ -8,7 +8,7 @@ defmodule Discordbot.Tasks.Autoprune do
   alias DiscordEx.RestClient.Resources.Guild
 
   @period 24 * 60 * 60 * 1000
-  @days 3
+  @days 15
 
   ####
   # Client
