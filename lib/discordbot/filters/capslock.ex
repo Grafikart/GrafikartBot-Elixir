@@ -23,7 +23,7 @@ defmodule Discordbot.Filters.Capslock do
 
   def is_capslock(content) do
     content == String.upcase(content) and
-    String.length(content) > 5 and
+    String.length(content) > 15 and
     Regex.match?(~r/[A-Z]{4,}/, content)
   end
 
