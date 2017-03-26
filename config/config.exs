@@ -35,6 +35,12 @@ config :discordbot,
     ```
     """
   ],
+  errors: [
+    {~r/Cannot modify header information - headers already sent by/, "https://www.grafikart.fr/formations/deboguer-code-php/headers-already-sent"},
+    {~r/Trying to get property of non-object /, "https://www.grafikart.fr/formations/deboguer-code-php/property-of-non-object"},
+    {~r/Parse error: syntax error, unexpected /, "https://www.grafikart.fr/formations/deboguer-code-php/syntax-error"},
+    {~r/ Undefined index: /, "https://www.grafikart.fr/formations/deboguer-code-php/undefined-index"}
+  ],
   commands: [
     vague: """
 :robot: Ta question est un peu trop vague @user.

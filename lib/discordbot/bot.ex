@@ -18,6 +18,7 @@ defmodule Discordbot.Bot do
         Discordbot.Filters.Capslock,
         Discordbot.Filters.Code,
         Discordbot.Filters.Mentions,
+        Discordbot.Filters.Error,
         Discordbot.Filters,
         Discordbot.Commands,
         Discordbot.Commands.SMS,
