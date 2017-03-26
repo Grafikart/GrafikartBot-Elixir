@@ -1,8 +1,10 @@
 defmodule Discordbot.Bot do
 
+  require Logger
+
   ## Client API
   def start_link(api_key) do
-    IO.puts "Starting bot"
+    Logger.debug "Starting bot..."
     DiscordEx.Client.start_link(%{
       token: api_key,
       handler: __MODULE__

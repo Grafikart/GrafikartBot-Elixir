@@ -29,7 +29,7 @@ defmodule Discordbot.Filters.Code do
   Is this message is code ?
   """
   def is_code(message) do
-    if Kernel.length(String.split(message, "\n")) > 7 do
+    if Kernel.length(String.split(message, "\n")) > 20 do
       Regex.scan(~r/[\{\}\[\]$;]/m, message)
         |> Kernel.length
         >= 3

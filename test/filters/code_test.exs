@@ -5,7 +5,7 @@ defmodule Discordbot.Filters.CodeTest do
   doctest Discordbot.Filters.Code
   alias Discordbot.Filters.Code
 
-  @code """
+  @code String.duplicate("""
       if(isset($_SESSION['id']) AND !empty($_SESSION['id']))
       {
           $id_planete_utilise=$_SESSION['planete_utilise'];
@@ -16,7 +16,7 @@ defmodule Discordbot.Filters.CodeTest do
           $req_affichage_defense->execute(array($id_planete_utilise));
           while($affichage_defense=$req_affichage_defense->fetch());
       }
-    """
+    """, 5)
 
   setup do
     {:ok, state: %{rest_client: self()}}
@@ -46,7 +46,7 @@ defmodule Discordbot.Filters.CodeTest do
    
     $server=$1
     $map=$2
-    """
+    """ |> String.duplicate(3)
     assert Code.is_code(code) == true
   end
 
