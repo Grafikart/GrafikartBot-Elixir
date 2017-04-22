@@ -17,12 +17,29 @@ defmodule Discordbot.Commands.Role do
     roles = Application.get_env(:discordbot, :roles)
     guild_id = Application.get_env(:discordbot, :guild)
     spawn fn ->
-      Channel.delete_message(conn, payload["channel_id"], payload["id"])
       message = case Map.get(roles, role) do
+        nil -> "Je ne connais pas ce rôle :( "
         role_id ->
           DiscordEx.RestClient.resource(conn, :put, "/guilds/#{guild_id}/members/#{user_id}/roles/#{role_id}")
-          "Tu es " <> role <> "maintenant"
+          "Tu es " <> role <> " maintenant"
+      end
+      Channel.send_message(conn, payload["channel_id"], %{content: message <> " " <> Message.mention(user_id)})
+    end
+    {:ok, state}
+  end
+
+  @doc """
+  Permet de se retirer d'un role particulier
+  """
+  def handle(:message_create, payload = %{"content" => "!rmrole " <> role, "author" => %{"id" => user_id}}, state = %{rest_client: conn}) do
+    roles = Application.get_env(:discordbot, :roles)
+    guild_id = Application.get_env(:discordbot, :guild)
+    spawn fn ->
+      message = case Map.get(roles, role) do
         nil -> "Je ne connais pas ce rôle :( "
+        role_id ->
+          DiscordEx.RestClient.resource(conn, :delete, "/guilds/#{guild_id}/members/#{user_id}/roles/#{role_id}")
+          "Tu n'es plus " <> role <> " maintenant"
       end
       Channel.send_message(conn, payload["channel_id"], %{content: message <> " " <> Message.mention(user_id)})
     end

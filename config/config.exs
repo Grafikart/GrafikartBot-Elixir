@@ -70,6 +70,7 @@ Voici la liste de mes commandes disponibles :
 **code** : Permet d'indiquer à un utilisateur comment mieux poster sa question, ex: "code @Grafikart#1849"
 **roles** : Permet de lister les différents rôle
 **role** : Permet d'afficher le rôle, ex: "role BackEnd"
+**rmrole** : Permet de retirer le rôle, ex: "rmrole BackEnd"
 
 Un bug / un problème avec le bot ? https://github.com/Grafikart/GrafikartBot-Elixir/issues
 """,
