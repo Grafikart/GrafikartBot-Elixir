@@ -56,6 +56,10 @@ Poster des gros morceaux de code n'est pas super pratique pour la compréhension
 En décrivant bien ton problème tu augmente les chances de réponses
 """
   ],
+  recast: %{
+    api_down: "Je suis désolé mais mon cerveau n'est pas joignable actuellement",
+    no_intent: "Je ne comprends pas votre demande, mais je vais m'améliorer !"
+  },
   help: """
 Voici la liste de mes commandes disponibles :
 
@@ -67,7 +71,6 @@ Voici la liste de mes commandes disponibles :
 
 Un bug / un problème avec le bot ? https://github.com/Grafikart/GrafikartBot-Elixir/issues
 """
-
 
 config :porcelain, goon_warn_if_missing: false
 
