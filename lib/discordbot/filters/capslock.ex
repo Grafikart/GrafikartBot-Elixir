@@ -1,8 +1,8 @@
 defmodule Discordbot.Filters.Capslock do
+
   @moduledoc """
   Handle capslock message 
   """
-
   alias DiscordEx.RestClient.Resources.Channel
   alias Discordbot.Helpers.Message
 

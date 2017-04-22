@@ -20,7 +20,7 @@ defmodule Recast do
   @doc """
   Get the reply from recast payload
   """
-  def reply(%{"results" => %{"replies" => replies}}), do: Enum.random(replies)
+  def reply(%{"results" => %{"replies" => replies}}), do: Enum.join(replies, ", ")
   def reply(_), do: config().no_intent
 
   @doc """

@@ -25,6 +25,7 @@ defmodule Discordbot.Bot do
         Discordbot.Filters,
         Discordbot.Commands,
         Discordbot.Commands.SMS,
+        Discordbot.Commands.Role,
         Discordbot.Commands.Admin
       ])
     else

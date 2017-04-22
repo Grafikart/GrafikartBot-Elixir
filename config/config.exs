@@ -68,9 +68,18 @@ Voici la liste de mes commandes disponibles :
 **grafikart** : Permet de renvoyer un utilisateur sur la recherche grafikart.fr, ex: "grafikart @Grafikart#1849 grafikart.fr"
 **php** : Permet de renvoyer un utilisateur sur la doc de php, ex: "php @Grafikart#1849 grafikart.fr"
 **code** : Permet d'indiquer à un utilisateur comment mieux poster sa question, ex: "code @Grafikart#1849"
+**roles** : Permet de lister les différents rôle
+**role** : Permet d'afficher le rôle, ex: "role BackEnd"
 
 Un bug / un problème avec le bot ? https://github.com/Grafikart/GrafikartBot-Elixir/issues
-"""
+""",
+  roles: %{
+    "FrontEnd"  => "305381272832704514",
+    "Freelance" => "305381504479920129",
+    "Fullstack" => "305381229753139200",
+    "BackEnd"   => "305381310996676609",
+    "Etudiant"  => "305381380802609163"
+  }
 
 config :porcelain, goon_warn_if_missing: false
 
