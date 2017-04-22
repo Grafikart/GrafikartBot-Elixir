@@ -75,11 +75,11 @@ Voici la liste de mes commandes disponibles :
 Un bug / un problème avec le bot ? https://github.com/Grafikart/GrafikartBot-Elixir/issues
 """,
   roles: %{
-    "FrontEnd"  => "305381272832704514",
-    "Freelance" => "305381504479920129",
-    "Fullstack" => "305381229753139200",
-    "BackEnd"   => "305381310996676609",
-    "Etudiant"  => "305381380802609163"
+    "fullstack" => "305381229753139200",
+    "backend"   => "305381310996676609",
+    "frontend"  => "305381272832704514",
+    "freelance" => "305381504479920129",
+    "etudiant"  => "305381380802609163"
   }
 
 config :porcelain, goon_warn_if_missing: false

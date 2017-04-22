@@ -14,6 +14,7 @@ defmodule Discordbot.Commands.Role do
   Permet de se placer dans un role particulier
   """
   def handle(:message_create, payload = %{"content" => "!role " <> role, "author" => %{"id" => user_id}}, state = %{rest_client: conn}) do
+    role = String.downcase(role)
     roles = Application.get_env(:discordbot, :roles)
     guild_id = Application.get_env(:discordbot, :guild)
     spawn fn ->
@@ -32,6 +33,7 @@ defmodule Discordbot.Commands.Role do
   Permet de se retirer d'un role particulier
   """
   def handle(:message_create, payload = %{"content" => "!rmrole " <> role, "author" => %{"id" => user_id}}, state = %{rest_client: conn}) do
+    role = String.downcase(role)
     roles = Application.get_env(:discordbot, :roles)
     guild_id = Application.get_env(:discordbot, :guild)
     spawn fn ->
