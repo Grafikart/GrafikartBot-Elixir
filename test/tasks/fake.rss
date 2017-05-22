@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/rss2full.xsl"?><?xml-stylesheet type="text/css" media="screen" href="http://feeds.feedburner.com/~d/styles/itemcontent.css"?><rss xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" version="2.0">
+  <channel>
+    <title>Grafikart.fr</title>
+    <description>Grafikart.fr</description>
+    <link>https://www.grafikart.fr/</link>
+    <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="http://feeds.feedburner.com/Grafikart" /><feedburner:info uri="grafikart" /><atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" /><feedburner:emailServiceId>Grafikart</feedburner:emailServiceId><feedburner:feedburnerHostname>https://feedburner.google.com</feedburner:feedburnerHostname><item>
+      <title>Tutoriel Laravel : Laravel Echo</title>
+      <description>&lt;p&gt;&lt;img src="https://www.grafikart.fr/uploads/tutoriels/1/thumb_890.jpg" alt="Thumb 890" /&gt;&lt;/p&gt;&lt;p&gt;Il est de plus en plus courant, dans une application web moderne, d&amp;#39;afficher les informations en temps réel à l&amp;#39;utilisateur.  On a recours pour cela aux Websockets qui vont permettre la communication direct entre le serveur et le client. Laravel offre pour cela un système de &amp;quot;broadcast&amp;quot; qui va permettre de transmettre les évènements au serveur de websocket par l&amp;#39;intermédiaire de Redis ou Pusher.&lt;/p&gt;
+
+&lt;h2&gt;Redis, liaison PHP / Websocket&lt;/h2&gt;
+
+&lt;p&gt;Le principal problème est donc de transmettre un évènement émit depuis PHP vers la partie Websocket. Pour cela Laravel dispose de 2 drivers :...&lt;p&gt;&lt;a href="https://www.grafikart.fr/tutoriels/laravel/laravel-echo-websocket-890"&gt;Lire la suite&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Grafikart/~4/AU0Oxo6xt68" height="1" width="1" alt=""/&gt;</description>
+      <link>http://feedproxy.google.com/~r/Grafikart/~3/AU0Oxo6xt68/laravel-echo-websocket-890</link>
+      <guid isPermaLink="false">https://www.grafikart.fr/tutoriels/laravel/laravel-echo-websocket-890</guid>
+      <pubDate>Tue, 16 May 2017 14:01:00 +0200</pubDate>
+    <feedburner:origLink>https://www.grafikart.fr/tutoriels/laravel/laravel-echo-websocket-890</feedburner:origLink></item>
+    <item>
+      <title>Tutoriel Laravel : Les files d'attente</title>
+      <description>&lt;p&gt;&lt;img src="https://www.grafikart.fr/uploads/tutoriels/1/thumb_889.jpg" alt="Thumb 889" /&gt;&lt;/p&gt;&lt;p&gt;Losque l&amp;#39;on crée une application il y a parfois des traitements longs à effectuer. Malheureusement, la nature &amp;quot;synchrone&amp;quot; de PHP, fait que ces opérations vont bloquer le process. La mise en place d&amp;#39;un système de file d&amp;#39;attente va permettre de déléguer une partie des traitements à un processus séparé et ainsi d&amp;#39;améliorer les performances de l&amp;#39;application.&lt;/p&gt;
+
+&lt;p&gt;Par exemple lorsqu&amp;#39;un utilisateur upload un avatar on a besoin de générer plusieurs format. On pourrait être tenté de mettre le code dans notre controller....&lt;p&gt;&lt;a href="https://www.grafikart.fr/tutoriels/laravel/jobs-queue-889"&gt;Lire la suite&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Grafikart/~4/PDWk2aFotgw" height="1" width="1" alt=""/&gt;</description>
+      <link>http://feedproxy.google.com/~r/Grafikart/~3/PDWk2aFotgw/jobs-queue-889</link>
+      <guid isPermaLink="false">https://www.grafikart.fr/tutoriels/laravel/jobs-queue-889</guid>
+      <pubDate>Wed, 10 May 2017 14:00:00 +0200</pubDate>
+    <feedburner:origLink>https://www.grafikart.fr/tutoriels/laravel/jobs-queue-889</feedburner:origLink></item>
+    <item>
+      <title>Tutoriel Symfony : Champs imbriqués</title>
+      <description>&lt;p&gt;&lt;img src="https://www.grafikart.fr/uploads/tutoriels/1/thumb_888.jpg" alt="Thumb 888" /&gt;&lt;/p&gt;&lt;p&gt;Nous allons explorer les formulaires sur Symfony à travers la création d&amp;#39;un système de champs imbriqués....&lt;p&gt;&lt;a href="https://www.grafikart.fr/tutoriels/symfony/champs-imbriques-888"&gt;Lire la suite&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Grafikart/~4/GYAfEWevHLk" height="1" width="1" alt=""/&gt;</description>
+      <link>http://feedproxy.google.com/~r/Grafikart/~3/GYAfEWevHLk/champs-imbriques-888</link>
+      <guid isPermaLink="false">https://www.grafikart.fr/tutoriels/symfony/champs-imbriques-888</guid>
+      <pubDate>Thu, 04 May 2017 14:00:00 +0200</pubDate>
+    <feedburner:origLink>https://www.grafikart.fr/tutoriels/symfony/champs-imbriques-888</feedburner:origLink></item>
+    <item>
+      <title>Tutoriel Symfony : Annotation et Upload de fichiers</title>
+      <description>&lt;p&gt;&lt;img src="https://www.grafikart.fr/uploads/tutoriels/1/thumb_887.jpg" alt="Thumb 887" /&gt;&lt;/p&gt;&lt;p&gt;Dans ce tutoriel je vous propose d&amp;#39;explorer l&amp;#39;utilisation des annotations à travers la création d&amp;#39;un système d&amp;#39;upload de fichiers &amp;quot;facile à configurer&amp;quot;. Le principe est d&amp;#39;être capable de &amp;quot;marquer&amp;quot; certains champs de nos entités comme &amp;quot;Uploadable&amp;quot;.&lt;/p&gt;
+
+&lt;h2&gt;Créer une annotation&lt;/h2&gt;
+
+&lt;p&gt;Pour créer une annotation il suffit de créer une simple classe. On précise que notre classe est une annotation gràce à &lt;code&gt;@Annotation&lt;/code&gt; et on précise la cible gràce à &lt;code&gt;@Target&lt;/code&gt;. ...&lt;p&gt;&lt;a href="https://www.grafikart.fr/tutoriels/symfony/annotation-file-upload-887"&gt;Lire la suite&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Grafikart/~4/P3KWne3oiQM" height="1" width="1" alt=""/&gt;</description>
+      <link>http://feedproxy.google.com/~r/Grafikart/~3/P3KWne3oiQM/annotation-file-upload-887</link>
+      <guid isPermaLink="false">https://www.grafikart.fr/tutoriels/symfony/annotation-file-upload-887</guid>
+      <pubDate>Thu, 27 Apr 2017 14:19:00 +0200</pubDate>
+    <feedburner:origLink>https://www.grafikart.fr/tutoriels/symfony/annotation-file-upload-887</feedburner:origLink></item>
+    <item>
+      <title>Tutoriel Divers : La concurrence sur PHP / NodeJS / Golang / Erlang</title>
+      <description>&lt;p&gt;&lt;img src="https://www.grafikart.fr/uploads/tutoriels/1/thumb_886.jpg" alt="Thumb 886" /&gt;&lt;/p&gt;&lt;p&gt;Je vous propose aujourd&amp;#39;hui de jeter un oeil sur la notion de concurrence et d&amp;#39;analyser le fonctionnement de quelque langages de programmation afin de mieux comprendre leurs spécificités. &lt;/p&gt;
+
+&lt;p&gt;Avant de nous lancer dans les explications, on va faire le point sur le vocabulaire employé :...&lt;p&gt;&lt;a href="https://www.grafikart.fr/tutoriels/divers/concurrence-php-nodejs-golang-886"&gt;Lire la suite&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Grafikart/~4/fu1o3Dgcenw" height="1" width="1" alt=""/&gt;</description>
+      <link>http://feedproxy.google.com/~r/Grafikart/~3/fu1o3Dgcenw/concurrence-php-nodejs-golang-886</link>
+      <guid isPermaLink="false">https://www.grafikart.fr/tutoriels/divers/concurrence-php-nodejs-golang-886</guid>
+      <pubDate>Thu, 20 Apr 2017 14:00:00 +0200</pubDate>
+    <feedburner:origLink>https://www.grafikart.fr/tutoriels/divers/concurrence-php-nodejs-golang-886</feedburner:origLink></item>
+  </channel>
+</rss>

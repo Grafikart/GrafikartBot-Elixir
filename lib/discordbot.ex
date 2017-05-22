@@ -11,7 +11,8 @@ defmodule Discordbot do
       [
         worker(Discordbot.Bot, [api_key], modules: [Discordbot.Botserver]),
         worker(Discordbot.Tasks.Premium, [:premium_process]),
-        worker(Discordbot.Tasks.Autoprune, [api_key, Application.get_env(:discordbot, :guild)])
+        worker(Discordbot.Tasks.Autoprune, [api_key, Application.get_env(:discordbot, :guild)]),
+        worker(Discordbot.Tasks.RSS, [api_key, Application.get_env(:discordbot, :guild)])
       ]
     else
       []

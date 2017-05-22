@@ -1,6 +1,7 @@
 use Mix.Config
 
 config :discordbot,
+  rss: "https://www.grafikart.fr/feed.rss",
   capslock: ":scream_cat: Pas la peine de hurler @user",
   empty_mention: ":robot: Merci de ne pas mentionner un autre utilisateur sans message @user",
   question: ":question: N'hésite pas à poser ta question directement @user, il n'est pas utile de demander si quelqu'un connait quelque chose avant.",
@@ -51,9 +52,8 @@ Essaie de détailler un peu plus ta problématique (n'hésite pas à utiliser ce
     php: ":mag: @user Je pense que cette fonction devrait t'aider http://php.net/search.php?show=quickref&pattern=@content",
     grafikart: ":mag: @user Il y a surement déjà un tutoriel sur le sujet https://www.grafikart.fr/search?q=@content",
     code: """
-:robot: Oula pas évident !
-Poster des gros morceaux de code n'est pas super pratique pour la compréhension, aussi @user n'hésite pas à utiliser ce template : http://hastebin.com/uzufecurol.php .
-En décrivant bien ton problème tu augmente les chances de réponses
+:robot: N'hésite pas à mieux décrire ton problème @user. Si tu le souhaite tu peux utiliser ce template :
+http://hastebin.com/uzufecurol.php
 """
   ],
   recast: %{

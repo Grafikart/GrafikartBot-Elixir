@@ -33,7 +33,8 @@ defmodule Discordbot.Mixfile do
       {:httpoison, "~> 0.9.0"},
       {:poison, "~> 2.0"},
       {:distillery, "~> 1.0"},
-      {:mariaex, "~> 0.7.3"}
+      {:mariaex, "~> 0.7.3"},
+      {:feeder_ex, "~> 1.1"}
     ]
   end
 end
