@@ -46,10 +46,8 @@ defmodule Discordbot.Tasks.RSS do
       Channel.send_message(state.rest_client, default_channel(state), %{
         content: get_message(last_post)
       })
-      IO.inspect("nothing")
       {:noreply, Map.put(state, :last_post, last_post)}
     else
-      IO.inspect("nothing")
       {:noreply, state}
     end
   end

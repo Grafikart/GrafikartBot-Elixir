@@ -4,5 +4,6 @@ before_install:
   - ls config/
 elixir:
   - 1.3.4
+  - 1.4
 otp_release:
   - 19.2
