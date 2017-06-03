@@ -103,19 +103,6 @@ defmodule Discordbot.Commands.Admin do
     end
   end
 
-  @doc """
-  Lance la mise à jour du système de premium
-  !premium
-  """
-  def handle(:message_create, payload = %{"content" => "!test"}, state = %{rest_client: conn}) do
-    if is_admin?(payload) do
-      IO.inspect(conn)
-      {:ok, state}
-    else
-      {:no, state}
-    end
-  end
-
   def handle(_type, _data, state) do
     {:no, state}
   end
