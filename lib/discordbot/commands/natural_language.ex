@@ -1,5 +1,8 @@
 # Permet de répondre "naturellement" lorsque le bot est mentionné
 defmodule Discordbot.NaturalLanguage do
+  @moduledoc """
+  Répond de manière humaine à un message
+  """
 
   alias DiscordEx.RestClient.Resources.Channel
   alias Discordbot.Helpers.Message

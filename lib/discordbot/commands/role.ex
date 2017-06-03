@@ -1,7 +1,11 @@
 defmodule Discordbot.Commands.Role do
+  @moduledoc """
+  Permet aux utilisateurs de s'ajouter / supprimer un rôle
+  """
 
   alias DiscordEx.RestClient.Resources.Guild
   alias DiscordEx.RestClient.Resources.Channel
+  alias DiscordEx.RestClient
   alias Discordbot.Helpers.Message
 
   @doc """
@@ -22,7 +26,7 @@ defmodule Discordbot.Commands.Role do
       message = case Map.get(roles, role) do
         nil -> "Je ne connais pas ce rôle :( "
         role_id ->
-          DiscordEx.RestClient.resource(conn, :put, "/guilds/#{guild_id}/members/#{user_id}/roles/#{role_id}")
+          RestClient.resource(conn, :put, "/guilds/#{guild_id}/members/#{user_id}/roles/#{role_id}")
           "Tu es " <> role <> " maintenant"
       end
       Message.dm(conn, user_id, message <> " " <> Message.mention(user_id))
@@ -42,7 +46,7 @@ defmodule Discordbot.Commands.Role do
       message = case Map.get(roles, role) do
         nil -> "Je ne connais pas ce rôle :( "
         role_id ->
-          DiscordEx.RestClient.resource(conn, :delete, "/guilds/#{guild_id}/members/#{user_id}/roles/#{role_id}")
+          RestClient.resource(conn, :delete, "/guilds/#{guild_id}/members/#{user_id}/roles/#{role_id}")
           "Tu n'es plus " <> role <> " maintenant"
       end
       Message.dm(conn, user_id, message <> " " <> Message.mention(user_id))
@@ -60,9 +64,9 @@ defmodule Discordbot.Commands.Role do
 
   def handle(_type, _data, state), do: {:no, state}
 
-  def roles(), do: Application.get_env(:discordbot, :roles)
+  def roles, do: Application.get_env(:discordbot, :roles)
 
-  def roles_str() do
+  def roles_str do
     roles()
       |> Map.keys()
       |> Enum.join(", ")

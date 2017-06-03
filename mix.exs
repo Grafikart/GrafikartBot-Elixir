@@ -7,7 +7,8 @@ defmodule Discordbot.Mixfile do
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps()]
+     deps: deps(),
+     dialyzer: [flags: ["-Wno_return"]]]
   end
 
   # Configuration for the OTP application
@@ -34,7 +35,9 @@ defmodule Discordbot.Mixfile do
       {:poison, "~> 2.0"},
       {:distillery, "~> 1.0"},
       {:mariaex, "~> 0.7.3"},
-      {:feeder_ex, "~> 1.1"}
+      {:feeder_ex, "~> 1.1"},
+      {:credo, "~> 0.8", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 0.5", only: [:dev], runtime: false}
     ]
   end
 end

@@ -10,7 +10,7 @@ defmodule Discordbot.Tasks.RSS.Test do
 
   def fake_entry do
     %{
-      title: "Tutoriel Laravel : Laravel Echo",
+      title: "Tutoriel Laravel : Laravel : Echo",
       link: "https://www.grafikart.fr/tutoriels/laravel/laravel-echo-websocket-890"
     }
   end
@@ -21,7 +21,7 @@ defmodule Discordbot.Tasks.RSS.Test do
   end
 
   test "Format message" do
-    assert "**<:grafikart:250692379638497280> Nouveau Tutoriel Laravel ** : Laravel Echo https://www.grafikart.fr/tutoriels/laravel/laravel-echo-websocket-890" = RSS.get_message(fake_entry())
+    assert "**<:grafikart:250692379638497280> Nouveau Tutoriel Laravel :** Laravel : Echo https://www.grafikart.fr/tutoriels/laravel/laravel-echo-websocket-890" = RSS.get_message(fake_entry())
   end
 
 end

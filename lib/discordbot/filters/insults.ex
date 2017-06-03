@@ -1,4 +1,7 @@
 defmodule Discordbot.Filters.Insults do
+  @moduledoc """
+  Filtre les insultes à partir d'un dinctionnaire et supprime les messages
+  """
 
   alias DiscordEx.RestClient.Resources.Channel
   alias Discordbot.Helpers.Message

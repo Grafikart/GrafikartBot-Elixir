@@ -8,7 +8,8 @@ defmodule Discordbot.Filters.Capslock do
 
   def handle(:message_create, %{"content" => content, "channel_id" => channel_id, "author" => %{"id" => user_id}}, state) do
     if is_capslock(content) do
-      message = Application.get_env(:discordbot, :capslock)
+      message = :discordbot
+        |> Application.get_env(:capslock)
         |> String.replace("@user", Message.mention(user_id))
       spawn fn -> Channel.send_message(state[:rest_client], channel_id, %{content: message}) end
       {:ok, state}

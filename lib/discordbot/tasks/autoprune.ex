@@ -6,6 +6,7 @@ defmodule Discordbot.Tasks.Autoprune do
   use GenServer
 
   alias DiscordEx.RestClient.Resources.Guild
+  alias DiscordEx.RestClient
 
   @period 24 * 60 * 60 * 1000
   @days 15
@@ -22,7 +23,7 @@ defmodule Discordbot.Tasks.Autoprune do
   end
 
   def init(state) do
-    {:ok, conn} = DiscordEx.RestClient.start_link(%{token: "Bot " <> state.api_key})
+    {:ok, conn} = RestClient.start_link(%{token: "Bot " <> state.api_key})
     schedule_work()
     {:ok, Map.put(state, :rest_client, conn)}
   end
@@ -36,7 +37,7 @@ defmodule Discordbot.Tasks.Autoprune do
 
   # Relance le process toutes les X secondes
   defp schedule_work do
-    Process.send_after(self(), :prune, @period) 
+    Process.send_after(self(), :prune, @period)
   end
 
   def handle_info(:prune, state) do

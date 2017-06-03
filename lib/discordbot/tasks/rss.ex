@@ -7,6 +7,8 @@ defmodule Discordbot.Tasks.RSS do
 
   alias DiscordEx.RestClient.Resources.Guild
   alias DiscordEx.RestClient.Resources.Channel
+  alias DiscordEx.RestClient
+  alias HTTPoison.Response
 
   @period 2 * 60 * 1000
 
@@ -23,7 +25,7 @@ defmodule Discordbot.Tasks.RSS do
   end
 
   def init(state) do
-    {:ok, conn} = DiscordEx.RestClient.start_link(%{token: "Bot " <> state.api_key})
+    {:ok, conn} = RestClient.start_link(%{token: "Bot " <> state.api_key})
     schedule_work()
     new_state = state
       |> Map.put(:rest_client, conn)
@@ -56,7 +58,8 @@ defmodule Discordbot.Tasks.RSS do
   Permet d'obtenir le chan principal sur discord'
   """
   def default_channel(%{rest_client: rest_client, guild: guild}) do
-    Guild.get(rest_client, guild)
+    rest_client
+      |> Guild.get(guild)
       |> Map.get("embed_channel_id")
   end
 
@@ -64,17 +67,22 @@ defmodule Discordbot.Tasks.RSS do
   Formate le message d'annonce d'un nouveau tutoriel
   """
   def get_message(%{title: title, link: link}) do
-    markdown_title = "**<:grafikart:250692379638497280> Nouveau " <> String.replace(title, ":", "** :")
+    parts = String.split(title, ":", parts: 2)
+    markdown_title =
+      "**<:grafikart:250692379638497280> Nouveau " <>
+      Enum.fetch!(parts, 0) <>
+      ":**" <>
+      Enum.fetch!(parts, 1)
     markdown_title <> " " <> link
   end
 
   @doc """
   Permet de récupérer le dernier article depuis le flux RSS
   """
-  def last_post() do
+  def last_post do
     rss_feed = Application.get_env(:discordbot, :rss)
     case HTTPoison.get(rss_feed) do
-      {:ok, %HTTPoison.Response{body: body}} -> last_post(body)
+      {:ok, %Response{body: body}} -> last_post(body)
       _ -> nil
     end
   end

@@ -7,6 +7,7 @@ defmodule Discordbot.Tasks.Premium do
   use GenServer
 
   alias DiscordEx.RestClient.Resources.Guild
+  alias DiscordEx.RestClient
 
   @period 600 * 1000
   @users_per_calls 1000
@@ -24,7 +25,7 @@ defmodule Discordbot.Tasks.Premium do
   end
 
   def init(state) do
-    {:ok, conn} = DiscordEx.RestClient.start_link(%{token: "Bot " <> Application.get_env(:discordbot, :api_key)})
+    {:ok, conn} = RestClient.start_link(%{token: "Bot " <> Application.get_env(:discordbot, :api_key)})
     # On récupère tous les utilisateurs premiums
     premiums = get_premiums(conn, state.guild, state.role)
     schedule_work()
@@ -48,7 +49,8 @@ defmodule Discordbot.Tasks.Premium do
 
   # Récupère la liste de tous les utilisateurs dans le role premium du channel
   defp get_premiums(conn, guild, premium_role) do
-    get_members(conn, guild, 0)
+    conn
+      |> get_members(guild, 0)
       |> Enum.filter(fn (user) -> Enum.member?(user["roles"], premium_role) end)
       |> Enum.map(&(&1["user"]["id"]))
   end
@@ -77,7 +79,7 @@ defmodule Discordbot.Tasks.Premium do
   end
 
   defp handle_update_role(state) do
-    premiums = get_premium_ids
+    premiums = get_premium_ids()
     new_premiums = (premiums -- state.premiums) |> Enum.map(&(add_premium(&1, state)))
     removed_premium = (state.premiums -- premiums) |> Enum.map(&(remove_premium(&1, state)))
     {:noreply, Map.put(state, :premiums, (state.premiums ++ new_premiums) -- removed_premium)}
@@ -86,16 +88,14 @@ defmodule Discordbot.Tasks.Premium do
   # Permet de passer un utilisateur premium sur Discord
   @spec add_premium(String.t, map) :: String.t
   defp add_premium(user_id, %{guild: guild, role: role, rest_client: conn}) do
-    DiscordEx.RestClient.resource(conn, :put, "guilds/#{guild}/members/#{user_id}/roles/#{role}")
-    IO.inspect "#{user_id} passe premium"
+    RestClient.resource(conn, :put, "guilds/#{guild}/members/#{user_id}/roles/#{role}")
     user_id
   end
 
   # Permet de supprimer un utilisateur premium sur Discord
   @spec remove_premium(String.t, map) :: String.t
   defp remove_premium(user_id, %{guild: guild, role: role, rest_client: conn}) do
-    DiscordEx.RestClient.resource(conn, :delete, "guilds/#{guild}/members/#{user_id}/roles/#{role}")
-    IO.inspect "#{user_id} supprimé du premium"
+    RestClient.resource(conn, :delete, "guilds/#{guild}/members/#{user_id}/roles/#{role}")
     user_id
   end
 

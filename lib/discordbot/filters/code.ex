@@ -1,5 +1,8 @@
 defmodule Discordbot.Filters.Code do
-  
+  @moduledoc """
+  Filtre les message pour éviter les copié/collé de longs blocs de code
+  """
+
   alias DiscordEx.RestClient.Resources.Channel
   alias Discordbot.Helpers.Message
   alias Discordbot.Commands.Admin
@@ -9,10 +12,8 @@ defmodule Discordbot.Filters.Code do
       spawn fn -> Channel.delete_message(conn, payload["channel_id"], payload["id"]) end
       spawn fn ->
         case Message.dm(conn, payload["author"]["id"], dm(payload)) do
-          %{"code" => _code} ->
-            Channel.send_message(conn, payload["channel_id"], %{content: message(payload)})
-          _ -> 
-            nil
+          %{"code" => _code} -> Channel.send_message(conn, payload["channel_id"], %{content: message(payload)})
+          _ -> nil
         end
       end
       {:ok, state}
@@ -23,16 +24,17 @@ defmodule Discordbot.Filters.Code do
 
   def handle(_type, _payload, state) do
     {:no, state}
-  end 
-  
+  end
+
   @doc """
   Is this message is code ?
   """
   def is_code(message) do
     if Kernel.length(String.split(message, "\n")) > 20 do
-      Regex.scan(~r/[\{\}\[\]$;]/m, message)
+      ~r/[\{\}\[\]$;]/m
+        |> Regex.scan(message)
         |> Kernel.length
-        >= 3
+        |> Kernel.>=(3)
     else
       false
     end

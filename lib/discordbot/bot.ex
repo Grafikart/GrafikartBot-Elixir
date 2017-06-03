@@ -1,17 +1,26 @@
 defmodule Discordbot.Bot do
+  @moduledoc """
+  GenServer contrôlant le bot
+  """
 
   require Logger
 
-  ## Client API
+  alias DiscordEx.Client
+
+  @doc """
+  Démarre le processus
+  """
   def start_link(api_key) do
     Logger.debug "Starting bot..."
-    DiscordEx.Client.start_link(%{
+    Client.start_link(%{
       token: api_key,
       handler: __MODULE__
     })
   end
 
-  ## Server API
+  @doc """
+  Gère l'évènement reçu par le bot en le passant à travers différents modules
+  """
   def handle_event({type, %{data: data}}, state) do
     if data["author"]["id"] != state.client_id do
       perform_handles(type, data, state, [
@@ -33,6 +42,9 @@ defmodule Discordbot.Bot do
     end
   end
 
+  @doc """
+  L'évènement n'est pas reconnu, on ne fait rien
+  """
   def handle_event({_type, _payload}, state) do
     {:ok, state}
   end

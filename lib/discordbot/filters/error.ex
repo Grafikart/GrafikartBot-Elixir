@@ -5,6 +5,7 @@ defmodule Discordbot.Filters.Error do
   """
 
   alias DiscordEx.RestClient.Resources.Channel
+  alias Discordbot.Helpers.Message
 
   def handle(:message_create, payload, state = %{rest_client: conn}) do
     case is_known_error?(payload["content"]) do
@@ -21,7 +22,8 @@ defmodule Discordbot.Filters.Error do
   Is the message contains a known error ?
   """
   def is_known_error?(msg) do
-    Application.get_env(:discordbot, :errors)
+    :discordbot
+      |> Application.get_env(:errors)
       |> check_pattern(msg)
   end
 
@@ -36,7 +38,7 @@ defmodule Discordbot.Filters.Error do
 
   defp message(link, payload) do
     template = ":mag_right: Hey je connais cette erreur @user ! N'hésite pas à regarder cette vidéo elle t'aidera à mieux comprendre de quoi il en retourne " <> link
-    Discordbot.Helpers.Message.prepare_message(template, payload)
+    Message.prepare_message(template, payload)
   end
 
 end

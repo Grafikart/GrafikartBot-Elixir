@@ -4,13 +4,14 @@ defmodule Discordbot.Filters.Mentions do
   """
 
   alias DiscordEx.RestClient.Resources.Channel
+  alias Discordbot.Helpers.Message
 
   def handle(:message_create, payload = %{"content" => content, "channel_id" => channel_id}, state = %{rest_client: conn}) do
     if is_empty_mention?(content) do
-      spawn fn -> 
+      spawn fn ->
         Channel.send_message(conn, channel_id, %{
           content: prepare_message(payload)
-        }) 
+        })
       end
       {:ok, state}
     else
@@ -23,8 +24,9 @@ defmodule Discordbot.Filters.Mentions do
   end
 
   defp prepare_message(payload) do
-    Application.get_env(:discordbot, :empty_mention)
-      |> Discordbot.Helpers.Message.prepare_message(payload)
+    :discordbot
+      |> Application.get_env(:empty_mention)
+      |> Message.prepare_message(payload)
   end
 
   defp is_empty_mention?("<@" <> user_id) do

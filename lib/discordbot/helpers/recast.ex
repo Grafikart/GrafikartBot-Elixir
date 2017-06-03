@@ -1,4 +1,7 @@
 defmodule Recast do
+  @moduledoc """
+  Permet d'utiliser l'API Recast afin d'obtenir des réponse "humaine", WIP
+  """
 
   def reply(message) when is_binary(message) do
     data = Poison.encode!(%{text: message, language: "fr"})
@@ -29,11 +32,11 @@ defmodule Recast do
   def intent(%{"results" => %{"action" => %{"slug" => slug}}}), do: slug
   def intent(_), do: false
 
-  def token() do
+  def token do
     "Token " <> config().token
   end
 
-  def config() do
+  def config do
    Application.get_env(:discordbot, :recast)
   end
 

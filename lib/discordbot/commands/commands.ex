@@ -1,4 +1,7 @@
 defmodule Discordbot.Commands do
+  @moduledoc """
+  Permet de poster des messages automatique à partir des commandes renseignées dans la config
+  """
 
   alias DiscordEx.RestClient.Resources.Channel
   alias Discordbot.Helpers.Message
@@ -52,7 +55,6 @@ defmodule Discordbot.Commands do
       content: ""
     }
   end
-
 
   defp message(command) do
     Application.get_env(:discordbot, :commands)[command.name]

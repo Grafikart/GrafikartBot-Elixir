@@ -1,6 +1,11 @@
 defmodule Discordbot.Commands.SMS do
+  @moduledoc """
+  Permet aux utilisateur d'alerter l'administrateur par SMS en cas de problème
+  Utilise l'API de Free
+  """
 
   alias DiscordEx.RestClient.Resources.Channel
+  alias DiscordEx.RestClient.Resources.Guild
 
   @doc """
   Send a message on general channel
@@ -32,7 +37,7 @@ defmodule Discordbot.Commands.SMS do
   Send an SMS using mobile.free.fr
   """
   def send(message) do
-    credentials = Application.get_env(:discordbot, :sms) |> Keyword.get(:credentials)
+    credentials = :discordbot |> Application.get_env(:sms) |> Keyword.get(:credentials)
     HTTPoison.get("https://smsapi.free-mobile.fr/sendmsg", [], [params: Keyword.put(credentials, :msg, message)])
   end
 
@@ -40,9 +45,11 @@ defmodule Discordbot.Commands.SMS do
   Does the user belongs to a role that can send SMS alerts ?
   """
   def is_allowed(conn, payload) do
-    expected_role = Application.get_env(:discordbot, :sms) |> Keyword.get(:role)
+    expected_role = :discordbot
+      |> Application.get_env(:sms)
+      |> Keyword.get(:role)
     %{"guild_id" => guild_id} = Channel.get(conn, payload["channel_id"])
-    %{"roles" => roles} = DiscordEx.RestClient.Resources.Guild.member(conn, guild_id, payload["author"]["id"])
+    %{"roles" => roles} = Guild.member(conn, guild_id, payload["author"]["id"])
     Enum.member?(roles, expected_role)
   end
 
