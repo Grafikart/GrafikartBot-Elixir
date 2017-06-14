@@ -48,9 +48,9 @@ config :discordbot,
 Essaie de détailler un peu plus ta problématique (n'hésite pas à utiliser ce template : http://hastebin.com/uzufecurol.php).
     """,
     troll: "https://www.youtube.com/watch?v=VjA9uJ2dFCI",
-    google: ":mag: @user Tu devrais trouver ton bonheur sur google https://www.google.fr/?gws_rd=ssl#q=@content",
+    google: ":mag: @user Tu devrais trouver ton bonheur sur Google https://www.google.fr/?gws_rd=ssl#q=@content",
     php: ":mag: @user Je pense que cette fonction devrait t'aider http://php.net/search.php?show=quickref&pattern=@content",
-    grafikart: ":mag: @user Il y a surement déjà un tutoriel sur le sujet https://www.grafikart.fr/search?q=@content",
+    grafikart: ":mag: @user Il y a sûrement déjà un tutoriel sur le sujet https://www.grafikart.fr/search?q=@content",
     code: """
 :robot: N'hésite pas à mieux décrire ton problème @user. Si tu le souhaite tu peux utiliser ce template :
 http://hastebin.com/uzufecurol.php
@@ -68,7 +68,7 @@ Voici la liste de mes commandes disponibles :
 **grafikart** : Permet de renvoyer un utilisateur sur la recherche grafikart.fr, ex: "grafikart @Grafikart#1849 grafikart.fr"
 **php** : Permet de renvoyer un utilisateur sur la doc de php, ex: "php @Grafikart#1849 grafikart.fr"
 **code** : Permet d'indiquer à un utilisateur comment mieux poster sa question, ex: "code @Grafikart#1849"
-**roles** : Permet de lister les différents rôle
+**roles** : Permet de lister les différents rôles
 **role** : Permet d'afficher le rôle, ex: "role BackEnd"
 **rmrole** : Permet de retirer le rôle, ex: "rmrole BackEnd"
 
