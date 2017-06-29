@@ -49,6 +49,7 @@ Essaie de détailler un peu plus ta problématique (n'hésite pas à utiliser ce
     """,
     troll: "https://www.youtube.com/watch?v=VjA9uJ2dFCI",
     google: ":mag: @user Tu devrais trouver ton bonheur sur Google https://www.google.fr/?gws_rd=ssl#q=@content",
+    ddg: ":duck: @user Tu devrais trouver ton bonheur sur https://duckduckgo.com/?q=@content",
     php: ":mag: @user Je pense que cette fonction devrait t'aider http://php.net/search.php?show=quickref&pattern=@content",
     grafikart: ":mag: @user Il y a sûrement déjà un tutoriel sur le sujet https://www.grafikart.fr/search?q=@content",
     code: """
