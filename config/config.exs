@@ -64,14 +64,15 @@ http://hastebin.com/uzufecurol.php
   help: """
 Voici la liste de mes commandes disponibles :
 
-**help** : Affiche cette aide
-**google** : Permet de renvoyer un utilisateur sur google, ex: "google @Grafikart#1849 grafikart.fr"
-**grafikart** : Permet de renvoyer un utilisateur sur la recherche grafikart.fr, ex: "grafikart @Grafikart#1849 grafikart.fr"
-**php** : Permet de renvoyer un utilisateur sur la doc de php, ex: "php @Grafikart#1849 grafikart.fr"
-**code** : Permet d'indiquer à un utilisateur comment mieux poster sa question, ex: "code @Grafikart#1849"
-**roles** : Permet de lister les différents rôles
-**role** : Permet d'afficher le rôle, ex: "role BackEnd"
-**rmrole** : Permet de retirer le rôle, ex: "rmrole BackEnd"
+**!help** : Affiche cette aide
+**!ddg** : Permet de renvoyer un utilisateur sur duckduckgo, ex: "!ddg @Grafikart#1849 grafikart.fr"
+**!google** : Permet de renvoyer un utilisateur sur google, ex: "!google @Grafikart#1849 grafikart.fr"
+**!grafikart** : Permet de renvoyer un utilisateur sur la recherche grafikart.fr, ex: "!grafikart @Grafikart#1849 grafikart.fr"
+**!php** : Permet de renvoyer un utilisateur sur la doc de php, ex: "!php @Grafikart#1849 grafikart.fr"
+**!code** : Permet d'indiquer à un utilisateur comment mieux poster sa question, ex: "!code @Grafikart#1849"
+**!roles** : Permet de lister les différents rôles
+**!role** : Permet de s'attribuer un rôle, ex: "!role BackEnd"
+**!rmrole** : Permet de retirer le rôle, ex: "!rmrole BackEnd"
 
 Un bug / un problème avec le bot ? https://github.com/Grafikart/GrafikartBot-Elixir/issues
 """,
