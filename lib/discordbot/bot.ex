@@ -35,7 +35,8 @@ defmodule Discordbot.Bot do
         Discordbot.Commands,
         Discordbot.Commands.SMS,
         Discordbot.Commands.Role,
-        Discordbot.Commands.Admin
+        Discordbot.Commands.Admin,
+        Discordbot.Commands.Benevolat
       ])
     else
       {:ok, state}
