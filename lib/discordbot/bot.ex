@@ -31,6 +31,7 @@ defmodule Discordbot.Bot do
         Discordbot.Filters.Code,
         Discordbot.Filters.Mentions,
         Discordbot.Filters.Error,
+        Discordbot.Filters.Chocopain
         Discordbot.Filters,
         Discordbot.Commands,
         Discordbot.Commands.SMS,
