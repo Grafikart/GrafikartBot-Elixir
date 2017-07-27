@@ -15,7 +15,18 @@ defmodule Discordbot.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :discord_ex, :poison, :websocket_client, :mariaex, :feeder_ex, :xmerl],
+    [
+      applications: [
+        :logger,
+        :discord_ex,
+        :poison,
+        :websocket_client,
+        :mariaex,
+        :feeder_ex,
+        :xmerl,
+        :exredis,
+        :toniq
+      ],
      mod: {Discordbot, []}]
   end
 
@@ -37,7 +48,9 @@ defmodule Discordbot.Mixfile do
       {:mariaex, "~> 0.7.3"},
       {:feeder_ex, "~> 1.1"},
       {:credo, "~> 0.8", only: [:dev, :test], runtime: false},
-      {:dialyxir, "~> 0.5", only: [:dev], runtime: false}
+      {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
+      {:exredis, ">= 0.1.1"},
+      {:toniq, "~> 1.0"}
     ]
   end
 end

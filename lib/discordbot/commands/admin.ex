@@ -3,6 +3,8 @@ defmodule Discordbot.Commands.Admin do
   Commandes spécifiques pour l'administrateur du tchat
   """
 
+  @limited_role 317371820296765441
+
   alias DiscordEx.RestClient.Resources.Channel
   alias Discordbot.Tasks.Premium
   alias DiscordEx.RestClient
@@ -103,6 +105,51 @@ defmodule Discordbot.Commands.Admin do
     end
   end
 
+  @doc """
+  Permet de prévenir un utilisateur d'un comportement inapropié
+  Exemple de Payload:
+  %{
+    "channel_id" => 261710699014146,
+    "emoji" => %{"id" => nil, "name" => "⚠"},
+    "message_id" => 339739827992599,
+    "user_id" => 8515360760324096
+  }
+  """
+  @spec handle(atom, map, map):: {atom, map}
+  def handle(:message_reaction_add, payload = %{"channel_id" => channel_id, "emoji" => emoji, "message_id" => message_id, "user_id" => user_id}, state = %{rest_client: conn}) do
+    quick_command = quick_command(emoji["name"])
+    if is_mod?(user_id) && !is_nil(quick_command) do
+      # On récupère le message original et on le supprime
+      guild = Application.get_env(:discordbot, :guild)
+      original_message = DiscordEx.RestClient.resource(conn, :get, "channels/#{channel_id}/messages/#{message_id}")
+      author_id = original_message["author"]["id"]
+      # On supprime le message original
+      Channel.delete_message(conn, channel_id, message_id)
+      # On place l'utilisateur en limité
+      RestClient.resource(conn, :put, "guilds/#{guild}/members/#{author_id}/roles/#{@limited_role}")
+      # On envoie un message sur le serveur privé
+      %{"id" => message_id} = Channel.send_message(conn, 318532120458821633, %{content: """
+
+        ```
+        #{Discordbot.Helpers.Message.content_with_mentions(original_message)}
+        ```
+
+        <@#{author_id}> #{quick_command.message}
+
+        Vous pourrez reposter dans les autres channels dans #{quick_command.duration} minutes
+        """}
+      )
+      Toniq.enqueue_with_delay(DiscordBot.UnmuteWorker, %{
+        conn: conn,
+        user: author_id,
+        message: message_id
+      }, delay_for: 1000 * quick_command.duration * 60)
+      {:ok, state}
+    else
+      {:no, state}
+    end
+  end
+
   def handle(_type, _data, state) do
     {:no, state}
   end
@@ -110,8 +157,24 @@ defmodule Discordbot.Commands.Admin do
   @doc """
   Est-ce que le message viens bien de l'administrateur ?
   """
-  def is_admin?(payload) do
-    Application.get_env(:discordbot, :admin) == payload["author"]["id"]
+  def is_admin?(user_id) when is_integer(user_id), do: Application.get_env(:discordbot, :admin) == user_id
+  def is_admin?(payload) when is_map(payload), do: Application.get_env(:discordbot, :admin) == payload["author"]["id"]
+
+  def is_mod?(user_id) when is_integer(user_id) do
+    Application.get_env(:discordbot, :mods) |> Enum.member?(user_id)
+  end
+
+  def quick_command(%{"emoji" => %{"name" => name}}), do: quick_command(name)
+  def quick_command(name) when is_binary(name) do
+    quick_commands = Application.get_env(:discordbot, :quick_commands, %{})
+    is_quick_command = quick_commands
+      |> Map.keys()
+      |> Enum.member?(name)
+    if is_quick_command do
+      Map.get(quick_commands, name, %{message: "", duration: 1})
+    else
+      nil
+    end
   end
 
 end

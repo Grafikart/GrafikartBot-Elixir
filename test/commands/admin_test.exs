@@ -51,4 +51,24 @@ defmodule Discordbot.Commands.AdminTest do
     assert_receive {_, _, {_, :post, "channels/1234/messages", _}}
   end
 
+  test "get quick command" do
+    reaction = %{
+      "channel_id" => 261710699014146,
+      "emoji" => %{"id" => nil, "name" => "patience"},
+      "message_id" => 339739827992599,
+      "user_id" => 8515360760324096
+    }
+    invalid_reaction = %{
+      "channel_id" => 261710699014146,
+      "emoji" => %{"id" => nil, "name" => "a"},
+      "message_id" => 339739827992599,
+      "user_id" => 8515360760324096
+    }
+    expected_message = Application.get_env(:discordbot, :quick_commands)["patience"].message
+    assert %{duration: a, message: message} = Discordbot.Commands.Admin.quick_command(reaction)
+    assert message == expected_message
+    assert Discordbot.Commands.Admin.quick_command(invalid_reaction) == nil
+  end
+
+
 end

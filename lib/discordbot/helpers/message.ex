@@ -31,4 +31,14 @@ defmodule Discordbot.Helpers.Message do
       |> String.replace("@content", content)
   end
 
+  @doc """
+  Injecte les mentions dans un message
+  """
+  @spec content_with_mentions(map):: binary
+  def content_with_mentions(%{"content" => content, "mentions" => mentions}) do
+    Enum.reduce(mentions, content, fn(%{"id" => id, "username" => username}, message) ->
+      String.replace(message, "<@#{id}>", "@#{username}")
+    end)
+  end
+
 end
