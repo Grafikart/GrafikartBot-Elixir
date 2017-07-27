@@ -1,4 +1,6 @@
 language: elixir
+services:
+  - redis-server
 before_install:
   - cp config/dev_demo.exs config/dev.exs
   - ls config/
@@ -11,3 +13,4 @@ script:
   - mix test
 otp_release:
   - 19.2
+  - 20.0

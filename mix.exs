@@ -50,6 +50,7 @@ defmodule Discordbot.Mixfile do
       {:credo, "~> 0.8", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
       {:exredis, ">= 0.1.1"},
+      {:websocket_client, ">= 1.3.0", override: true},
       {:toniq, "~> 1.0"}
     ]
   end
