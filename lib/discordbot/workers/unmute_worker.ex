@@ -1,4 +1,7 @@
 defmodule DiscordBot.UnmuteWorker do
+  @moduledoc """
+  Demute les gens après les avoir placé dans le salon limité
+  """
 
   @limited_role 317371820296765441
   @limited_channel 318532120458821633

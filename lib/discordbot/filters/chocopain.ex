@@ -7,7 +7,7 @@ defmodule Discordbot.Filters.Chocopain do
 
   def handle(:message_create, payload, state = %{rest_client: conn}) do
     if is_chocopain?(payload["content"]) do
-      spawn fn -> 
+      spawn fn ->
         Channel.send_message(conn, payload["channel_id"], %{
           content: ":croissant: Afin d'éviter tout débat merci d'utiliser le mot consacré **chocopain** pour désigner cette patisserie"
         })

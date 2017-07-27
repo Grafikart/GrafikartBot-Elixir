@@ -39,7 +39,6 @@ defmodule Discordbot.Commands.Benevolat do
     handle(:message_reaction_add, payload, state)
   end
 
-
   def handle(_type, _data, state) do
     {:no, state}
   end

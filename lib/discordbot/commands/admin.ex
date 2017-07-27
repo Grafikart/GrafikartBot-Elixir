@@ -8,6 +8,7 @@ defmodule Discordbot.Commands.Admin do
   alias DiscordEx.RestClient.Resources.Channel
   alias Discordbot.Tasks.Premium
   alias DiscordEx.RestClient
+  alias Discordbot.Helpers.Message
 
   @doc """
   Permet d'envoyer un message à travers le bot
@@ -121,7 +122,7 @@ defmodule Discordbot.Commands.Admin do
     if is_mod?(user_id) && !is_nil(quick_command) do
       # On récupère le message original et on le supprime
       guild = Application.get_env(:discordbot, :guild)
-      original_message = DiscordEx.RestClient.resource(conn, :get, "channels/#{channel_id}/messages/#{message_id}")
+      original_message = RestClient.resource(conn, :get, "channels/#{channel_id}/messages/#{message_id}")
       author_id = original_message["author"]["id"]
       # On supprime le message original
       Channel.delete_message(conn, channel_id, message_id)
@@ -131,7 +132,7 @@ defmodule Discordbot.Commands.Admin do
       %{"id" => message_id} = Channel.send_message(conn, 318532120458821633, %{content: """
 
         ```
-        #{Discordbot.Helpers.Message.content_with_mentions(original_message)}
+        #{Message.content_with_mentions(original_message)}
         ```
 
         <@#{author_id}> #{quick_command.message}
@@ -161,7 +162,7 @@ defmodule Discordbot.Commands.Admin do
   def is_admin?(payload) when is_map(payload), do: Application.get_env(:discordbot, :admin) == payload["author"]["id"]
 
   def is_mod?(user_id) when is_integer(user_id) do
-    Application.get_env(:discordbot, :mods) |> Enum.member?(user_id)
+    :discordbot |> Application.get_env(:mods) |> Enum.member?(user_id)
   end
 
   def quick_command(%{"emoji" => %{"name" => name}}), do: quick_command(name)
