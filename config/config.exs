@@ -88,10 +88,16 @@ config :discordbot,
   },
   # Permet de gérer des commandes via des réactions
   quick_commands: %{
+    "indulgence" => %{
+      message: """
+      Soyez indulgent, tous n'ont pas la science infuse, si vous n'avez pas la patience pour aider les autres utilisateurs, laissez d'autres personnes répondre à votre place.
+      Si sa question peut être résolue via une recherche, expliquez plutôt comment il aurait du poser sa question au moteur de recherche.
+      """,
+      duration: 2
+    },
     "patience" => %{
       message: """
-      Si vous n'avez pas la patience pour aider les autres utilisateurs, laissez d'autres personnes répondre à votre place.
-      Si sa question peut être résolue via une recherche, expliquez plutôt comment il aurait du poser sa question au moteur de recherche.
+      Soyez patient, il est inutile de reposer x fois votre question, si quelqu'un a la réponse il vous la donnera, sinon reposez votre question à un autre moment de la journée.
       """,
       duration: 1
     },
