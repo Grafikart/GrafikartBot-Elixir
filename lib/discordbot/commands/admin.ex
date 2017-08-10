@@ -9,6 +9,7 @@ defmodule Discordbot.Commands.Admin do
   alias Discordbot.Tasks.Premium
   alias DiscordEx.RestClient
   alias Discordbot.Helpers.Message
+  alias DiscordEx.Connections.REST
 
   @doc """
   Permet d'envoyer un message à travers le bot
@@ -127,7 +128,12 @@ defmodule Discordbot.Commands.Admin do
       # On supprime le message original
       Channel.delete_message(conn, channel_id, message_id)
       # On place l'utilisateur en limité
-      RestClient.resource(conn, :put, "guilds/#{guild}/members/#{author_id}/roles/#{@limited_role}")
+      spawn fn ->
+        REST.put!("/guilds/#{guild}/members/#{author_id}/roles/#{@limited_role}", "", [
+          {"Authorization", "Bot " <> Application.get_env(:discordbot, :api_key)},
+          {"X-Audit-Log-Reason", URI.encode(Message.content_with_mentions(original_message))}
+        ])
+      end
       # On envoie un message sur le serveur privé
       %{"id" => message_id} = Channel.send_message(conn, 318532120458821633, %{content: """
 
