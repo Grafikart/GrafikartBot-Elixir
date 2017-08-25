@@ -7,7 +7,7 @@ defmodule Discordbot.Filters.InsultsTest do
   end
 
   test "should detect insults" do
-    message = "franchement c'est un truc de pute"
+    message = "pute"
     assert Discordbot.Filters.Insults.is_insult?(message) == true
   end
 
