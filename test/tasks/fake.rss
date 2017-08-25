@@ -11,7 +11,7 @@
 &lt;h2&gt;Redis, liaison PHP / Websocket&lt;/h2&gt;
 
 &lt;p&gt;Le principal problème est donc de transmettre un évènement émit depuis PHP vers la partie Websocket. Pour cela Laravel dispose de 2 drivers :...&lt;p&gt;&lt;a href="https://www.grafikart.fr/tutoriels/laravel/laravel-echo-websocket-890"&gt;Lire la suite&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/Grafikart/~4/AU0Oxo6xt68" height="1" width="1" alt=""/&gt;</description>
-      <link>http://feedproxy.google.com/~r/Grafikart/~3/AU0Oxo6xt68/laravel-echo-websocket-890</link>
+      <link>https://www.grafikart.fr/tutoriels/laravel/laravel-echo-websocket-890</link>
       <guid isPermaLink="false">https://www.grafikart.fr/tutoriels/laravel/laravel-echo-websocket-890</guid>
       <pubDate>Tue, 16 May 2017 14:01:00 +0200</pubDate>
     <feedburner:origLink>https://www.grafikart.fr/tutoriels/laravel/laravel-echo-websocket-890</feedburner:origLink></item>
