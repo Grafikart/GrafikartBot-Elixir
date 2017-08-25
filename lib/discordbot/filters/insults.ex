@@ -26,7 +26,7 @@ defmodule Discordbot.Filters.Insults do
   @spec is_insult?(String.t) :: boolean
   def is_insult?(content) do
     insultes = Enum.join(Application.get_env(:discordbot, :insults)[:badwords], "|")
-    Regex.run(~r/(\s(#{insultes})|(#{insultes})\s)$/i, content) != nil
+    Regex.run(~r/(\s(#{insultes})|(#{insultes})(\s|\Z))$/i, content) != nil
   end
 
   @doc """

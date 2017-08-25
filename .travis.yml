@@ -14,3 +14,7 @@ script:
 otp_release:
   - 19.2
   - 20.0
+
+matrix:
+  allow_failures:
+    - otp_release: 20.0

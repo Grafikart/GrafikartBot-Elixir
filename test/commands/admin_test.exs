@@ -65,7 +65,7 @@ defmodule Discordbot.Commands.AdminTest do
       "user_id" => 8515360760324096
     }
     expected_message = Application.get_env(:discordbot, :quick_commands)["patience"].message
-    assert %{duration: a, message: message} = Discordbot.Commands.Admin.quick_command(reaction)
+    assert %{duration: _, message: message} = Discordbot.Commands.Admin.quick_command(reaction)
     assert message == expected_message
     assert Discordbot.Commands.Admin.quick_command(invalid_reaction) == nil
   end

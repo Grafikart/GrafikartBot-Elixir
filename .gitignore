@@ -1,6 +1,7 @@
 # IntelliJ
 .idea
 dploy.sh
+mix.lock
 *.iml
 
 # No release
