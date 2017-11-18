@@ -1,5 +1,7 @@
 use Mix.Config
 
+config :toniq, redis_url: "redis://127.0.0.1:6379/0"
+
 config :discordbot,
   test: true,
   admin: 100,

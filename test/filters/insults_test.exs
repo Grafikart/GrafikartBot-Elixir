@@ -18,6 +18,7 @@ defmodule Discordbot.Filters.InsultsTest do
      it is written on vanilla javascript,
     """
     assert Insults.is_insult?(message) == false
+    assert Insults.is_insult?("Voila le lien https://imgur.com/a/kfHpd") == false
   end
 
   test "should delete the insult", %{state: state} do
