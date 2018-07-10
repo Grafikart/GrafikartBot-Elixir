@@ -44,8 +44,9 @@ defmodule Discordbot.Tasks.RSS do
   def handle_info(:parse_rss, state) do
     schedule_work()
     last_post = last_post()
+    channel_id = Application.get_env(:discordbot, :annonces)
     if state.last_post != last_post && last_post != nil do
-      Channel.send_message(state.rest_client, default_channel(state), %{
+      Channel.send_message(state.rest_client, channel_id, %{
         content: get_message(last_post)
       })
       {:noreply, Map.put(state, :last_post, last_post)}
