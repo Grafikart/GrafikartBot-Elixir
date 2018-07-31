@@ -54,7 +54,7 @@ config :discordbot,
     php: ":mag: @user Je pense que cette fonction devrait t'aider http://php.net/search.php?show=quickref&pattern=@content",
     grafikart: ":mag: @user Il y a sûrement déjà un tutoriel sur le sujet https://www.grafikart.fr/search?q=@content",
     code: """
-    :robot: N'hésite pas à mieux décrire ton problème @user. Si tu le souhaite tu peux utiliser ce template :
+    :robot: N'hésite pas à mieux décrire ton problème @user. Si tu le souhaites, tu peux utiliser ce template :
     http://hastebin.com/uzufecurol.php
     """
   ],
